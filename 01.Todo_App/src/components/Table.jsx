@@ -3,6 +3,9 @@ import { TodoContext } from "../Context/TodoProvider";
 
 const Table = () => {
     const {todoList} = useContext(TodoContext)
+    const handleCheckBox = (id)=>{
+        console.log(id);
+    }
     return (
         <div>
             <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
@@ -21,8 +24,14 @@ const Table = () => {
                                 return(
                                     <tr key={inx}>
                                         <th>{inx+1}</th>
-                                        <td><input type="checkbox" className="checkbox checkbox-primary" /></td>
-                                        <td>{todo.title}</td>
+                                        <td>
+                                            <div className="flex gap-2">
+                                                <input onClick={()=>handleCheckBox(todo)} id={inx} type="checkbox"  className="checkbox checkbox-sm checkbox-primary" />
+                                                <label htmlFor={inx} >{todo.status == true ? "Complete":"Incomplete"} </label>
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                        <td>{todo.title} </td>
                                         <td>
                                             <div className="flex gap-3">
                                                 <button className="btn btn-xs btn-soft">Edit</button>
