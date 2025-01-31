@@ -8,3 +8,4 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 01. Use Tailwind css (https://tailwindcss.com/docs/installation/using-vite)
 02. Install daisyUI as a Tailwind plugin (https://v5.daisyui.com/docs/install/)
+03. Context API has been use for state management.
