@@ -1,7 +1,7 @@
 const MovieForm = () => {
     return (
         <form className='flex gap-2'>
-            <input name="title" type="text" placeholder="Type here" className="input w-full" />
+            <input name="title" type="text" placeholder="Type Here Movie Name..." className="input w-full" />
             <select name="oot" defaultValue="Select OOT" className="select">
                 <option disabled={true}>Select OOT</option>
                 <option value="Netflix">Netflix</option>
