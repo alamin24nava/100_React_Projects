@@ -1,4 +1,3 @@
-import React from 'react';
 import MovieLists from '../components/MovieLists';
 import Header from "../components/Header"
 import FilterMovie from "../components/FilterMovie"

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const FilterMovie = () => {
     return (
         <div className='text-center'>

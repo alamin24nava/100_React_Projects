@@ -1,5 +1,3 @@
-import React from 'react';
-
 const MovieForm = () => {
     return (
         <form className='flex gap-2'>
