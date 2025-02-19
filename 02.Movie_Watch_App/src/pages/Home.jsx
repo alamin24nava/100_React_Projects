@@ -3,6 +3,8 @@ import Header from "../components/Header"
 import FilterMovie from "../components/FilterMovie"
 import MovieForm from '../components/MovieForm';
 import { useState } from 'react';
+import toast from "react-hot-toast";
+
 
 const Home = () => {
     const [movies, setMovies] = useState([
@@ -17,23 +19,41 @@ const Home = () => {
             title:"A simple star rating component for your React projects ",
             platform:"hulu",
             status:false
-        },
-        {
-            id:3,
-            title:"A simple star rating component for your React projects ",
-            platform:"amazon",
-            status:true
         }
     ])
+    const addMovie = (e,{title, platform},setMovieData)=>{
+        e.preventDefault()
+        if (title.trim() == "" || platform.trim() == "") return toast.error("Please Provide Title & OTT")
+        const newMovie = {
+            id:crypto.randomUUID(),
+            title:title,
+            platform:platform,
+            status:false
+        }
+        setMovies([...movies, newMovie])
+        setMovieData({
+            title:"",
+            platform:"Select an OOT"
+        })
+    }
+    // console.log(addMovie());
     const removeMovie = (id)=>{
         setMovies(movies.filter((item)=>item.id !== id))
     }
+    const toggleWatch = (id)=>{
+        const copyarr = [...movies]
+        const findId = copyarr.find((item)=> item.id === id)
+        console.log(findId);
+        copyarr
+    }
+
+
     return (
         <div className='flex flex-col gap-4'>
             <Header/>
-            <MovieForm/>
+            <MovieForm addMovie={addMovie}/>
             <FilterMovie/>
-            <MovieLists movies={movies} removeMovie={removeMovie}/>
+            <MovieLists movies={movies} removeMovie={removeMovie} toggleWatch={toggleWatch}/>
         </div>
     );
 };
