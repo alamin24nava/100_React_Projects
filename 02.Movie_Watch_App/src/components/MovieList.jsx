@@ -16,8 +16,9 @@ const MovieList = ({movie, removeMovie, toggleWatch}) => {
                         <ReactStars value={1} count={5} size={16} color2={'#ffd700'} />
                     </div>
                 </div>
-                <button className="btn btn-soft btn-accent">{movie.status !== false ? "Watched":"Unwatch"}</button>
-                <button onClick={()=>removeMovie(movie.id)} className="btn btn-soft btn-secondary">Remove</button>
+                <button className={`${movie.status ? 'btn-accent' : 'btn-warning'} btn-soft btn`}>{movie.status !== false ? "Watched":"Unwatch"}</button>
+                {/* <button className={`movie.status ? 'btn-accent btn btn-soft':'btn-primary btn btn-soft'`}>{movie.status !== false ? "Watched":"Unwatch"}</button> */}
+                <button onClick={()=>removeMovie(movie.id)} className="btn btn-soft btn-error">Remove</button>
             </li>
         </>
     );
