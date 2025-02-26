@@ -21,19 +21,21 @@ const Home = () => {
             status:false
         }
     ])
-    const addMovie = (e,{title, platform},setMovieData)=>{
+    const addMovie = (e,{title, platform,language},setMovieData)=>{
         e.preventDefault()
         if (title.trim() == "" || platform.trim() == "") return toast.error("Please Provide Title & OTT")
         const newMovie = {
             id:crypto.randomUUID(),
             title:title,
             platform:platform,
+            language:language,
             status:false
         }
         setMovies([...movies, newMovie])
         setMovieData({
             title:"",
-            platform:"Select an OOT"
+            platform:"",
+            language:""
         })
     }
     // console.log(addMovie());
