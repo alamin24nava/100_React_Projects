@@ -1,4 +1,5 @@
 import ReactStars from 'react-stars'
+import Button from '../ui/Button';
 // eslint-disable-next-line react/prop-types
 const MovieList = ({index, movie, removeMovie, toggleWatch}) => {
     return (
@@ -19,8 +20,8 @@ const MovieList = ({index, movie, removeMovie, toggleWatch}) => {
                         <ReactStars value={1} count={5} size={16} color2={'#ffd700'} />
                     </div>
                 </div>
-                <button onClick={()=>toggleWatch(movie.id)} className={`${movie.status ? 'btn-accent' : 'btn-warning'} btn-soft btn`}>{movie.status !== false ? "Watched":"Unwatch"}</button>
-                <button onClick={()=>removeMovie(movie.id)} className="btn btn-soft btn-error">Remove</button>
+                <Button _onClick={()=>toggleWatch(movie.id)} name={movie.status !== false ? "Watched":"Unwatch"} style={`${movie.status ? 'btn-accent' : 'btn-warning'} btn-soft btn`}/>
+                <Button _onClick={()=>removeMovie(movie.id)} name="Remove" style="btn btn-soft btn-error"/>
             </li>
         </>
     );

@@ -1,10 +1,12 @@
-const FilterMovie = () => {
+import Button from "../ui/Button";
+
+const FilterMovie = ({_onClick}) => {
     return (
         <div className='text-center'>
             <div className="join">
-                <button className="btn join-item btn-soft">All</button>
-                <button className="btn join-item btn-soft btn-accent">Watched</button>
-                <button className="btn join-item btn-soft btn-warning">Unwatched</button>
+                <Button _onClick={()=>_onClick("all")} name="All" style="btn join-item btn-soft btn-soft"/>
+                <Button _onClick={()=>_onClick("watched")} name="Watched" style="btn join-item btn-soft btn-accent"/>
+                <Button _onClick={()=>_onClick("unwatch")} name="Unwatched" style="btn join-item btn-soft btn-warning"/>
             </div>
         </div>
     );

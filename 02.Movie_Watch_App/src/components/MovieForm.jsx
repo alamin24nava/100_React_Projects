@@ -1,5 +1,7 @@
 import { useState } from "react";
-import Select from "./Select";
+import Select from "../ui/Select";
+import Button from "../ui/Button";
+import Input from "../ui/Input";
 
 const MovieForm = ({addMovie}) => {
     const [movieData, setMovieData] =useState({
@@ -17,10 +19,10 @@ const MovieForm = ({addMovie}) => {
     return (
         <>
         <form className='flex gap-2'>
-            <input onChange={handleChange} name="title" value={movieData.title} type="text" placeholder="Type Here Movie Name..." className="input w-full"/>
-            <Select handleChange={handleChange} name="platform" value={movieData.platform} defaultValue="Select An OTT" options={platforms} />
-            <Select handleChange={handleChange} name="language" value={movieData.language} defaultValue="Select a Languages" options={languages} />
-            <button onClick={(e)=>addMovie(e,movieData, setMovieData)} className="btn btn-soft btn-primary">Add List </button>
+            <Input _onChange={handleChange} name="title" value={movieData.title} type="text" placeholder="Type Here Movie Name..." style="input w-full"/>
+            <Select handleChange={handleChange} name="platform" value={movieData.platform} defaultValue="Select An OTT" options={platforms}/>
+            <Select handleChange={handleChange} name="language" value={movieData.language} defaultValue="Select a Languages" options={languages}/>
+            <Button _onClick={(e)=>addMovie(e,movieData, setMovieData)} name="Add List" style="btn btn-soft btn-primary"/>
         </form>
         </>
     );

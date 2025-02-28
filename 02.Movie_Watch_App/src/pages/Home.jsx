@@ -4,12 +4,19 @@ import FilterMovie from "../components/FilterMovie"
 import MovieForm from '../components/MovieForm';
 import { useState } from 'react';
 import toast from "react-hot-toast";
+import Button from '../ui/Button';
 
 
 const Home = () => {
     const [movies, setMovies] = useState([
         {
             id:1,
+            title:"A simple star rating component for your React projects ",
+            platform:"netflix",
+            status:true
+        },
+        {
+            id:23,
             title:"A simple star rating component for your React projects ",
             platform:"netflix",
             status:false
@@ -23,13 +30,14 @@ const Home = () => {
     ])
     const addMovie = (e,{title, platform,language},setMovieData)=>{
         e.preventDefault()
-        if (title.trim() == "" || platform.trim() == "") return toast.error("Please Provide Title & OTT")
+        if (title.trim() == "" || platform.trim() == "") return toast.error("Please Provide Title, Languages & OTT")
         const newMovie = {
             id:crypto.randomUUID(),
-            title:title,
-            platform:platform,
-            language:language,
-            status:false
+            title,
+            platform,
+            language,
+            status:false,
+            rating:null
         }
         setMovies([...movies, newMovie])
         setMovieData({
@@ -43,18 +51,30 @@ const Home = () => {
         setMovies(movies.filter((item)=>item.id !== id))
     }
     const toggleWatch = (id)=>{
-        const copyarr = [...movies]
-        const findId = copyarr.find((item)=> item.id === id)
-        console.log(findId);
-        copyarr
+        const findId = movies.map((item)=> item.id === id ? {...item, status: !item.status} : item)
+        setMovies(findId)
     }
 
+    const handleFilter =(type)=>{
+        // const filterMovies =  movies.filter((item)=> item.status === false)
+        const as = [...movies]
+        if(type == "watched"){
+            const filterMovies =  as.filter((item)=> item.status === true)
+            setMovies(filterMovies)
+        }else if(type == "unwatch"){
+            const filterMoviesFalse =  as.filter((item)=> item.status === false)
+            setMovies(filterMoviesFalse)
+        }else if(type == "all"){
+             setMovies(...movies)
+        }
+        
+    }
 
     return (
         <div className='flex flex-col gap-4'>
             <Header/>
             <MovieForm addMovie={addMovie}/>
-            <FilterMovie/>
+            <FilterMovie _onClick={handleFilter}/>
             <MovieLists movies={movies} removeMovie={removeMovie} toggleWatch={toggleWatch}/>
         </div>
     );
