@@ -12,12 +12,12 @@ const MovieList = ({index, movie, removeMovie, toggleWatch}) => {
                 <div className="list-col-grow">
                     <div className='flex gap-2 items-center'>
                         <span className='truncate max-w-[240px]'>{movie.title}</span>
-                        <ReactStars value={1} count={1} size={20} color2={'#ffd700'} />
-                        <span>5/5</span>
+                        <ReactStars value={movie.rating} count={1} size={20} color2={'#ffd700'} />
+                        <span>{movie.rating}/5</span>
                     </div>
                     <div className="text-xs uppercase font-semibold opacity-60 flex gap-2 items-center">
                         <span>{movie.platform}</span>
-                        <ReactStars value={1} count={5} size={16} color2={'#ffd700'} />
+                        <ReactStars value={2.5} count={5} size={16} color2={'#ffd700'} />
                     </div>
                 </div>
                 <Button _onClick={()=>toggleWatch(movie.id)} name={movie.status !== false ? "Watched":"Unwatch"} style={`${movie.status ? 'btn-accent' : 'btn-warning'} btn-soft btn`}/>
